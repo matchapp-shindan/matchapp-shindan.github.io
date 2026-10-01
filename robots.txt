@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # result.html は meta robots noindex で除外（X等のOGP取得のためクロール自体は許可）
-Sitemap: https://systemteamtriple-tech.github.io/matchapp-shindan/sitemap.xml
+Sitemap: https://matchapp-shindan.github.io/sitemap.xml

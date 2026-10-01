@@ -18,7 +18,7 @@ HTML / CSS / JavaScript のみで動く静的サイト。サーバー不要（Gi
 
 - [ ] `js/apps.js` の料金・機能・安全性を各公式サイトで確認して記入し、`infoCheckedAt` に確認日を入れる
 - [ ] ASPで提携承認後、`js/affiliate.js` の `url` にアフィリエイトURLを貼る（空欄の間は公式サイト・ストアに直接リンク）
-- [ ] `https://example.com` を本番ドメインに一括置換（HTML の canonical/OGP、sitemap.xml、robots.txt、js/config.js）
+- [x] 公開URL: https://matchapp-shindan.github.io/ （GitHub Pages / organization: matchapp-shindan）。独自ドメインに変える場合は HTML の canonical/OGP、sitemap.xml、robots.txt、js/config.js の URL を一括置換
 - [ ] 運営者情報・プライバシーポリシーのページを追加（ASPの審査で求められることが多い）
 - [ ] 必要なら `js/config.js` に GA4 の測定IDを設定
 
