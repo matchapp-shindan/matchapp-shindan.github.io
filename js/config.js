@@ -6,7 +6,7 @@
  */
 window.SITE_CONFIG = {
   siteName: 'マッチングアプリ診断',
-  siteUrl: 'https://systemteamtriple-tech.github.io/matchapp-shindan', // 末尾スラッシュなし
+  siteUrl: 'https://matchapp-shindan.github.io', // 末尾スラッシュなし
 
   // 広告表記（ステルスマーケティング規制対応）
   // [data-ad-disclosure] 要素にこの文言が差し込まれます。空文字にすると非表示。
