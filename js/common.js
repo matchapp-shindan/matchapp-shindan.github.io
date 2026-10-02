@@ -78,7 +78,8 @@
     var label = platform === 'ios' ? 'App Storeでダウンロード' : platform === 'android' ? 'Google Playでダウンロード' : '';
     if (!label) return null;
     var shortLabel = platform === 'ios' ? 'App Storeで入手' : 'Google Playで入手';
-    if (aff && aff.downloadVia !== 'store') return { url: aff.url, label: label, shortLabel: shortLabel, affiliate: true };
+    // アフィリエイト経由の場合は公式の案内ページに飛ぶため、ストア名は表示しない
+    if (aff && aff.downloadVia !== 'store') return { url: aff.url, label: 'アプリをダウンロード', shortLabel: 'アプリを入手', affiliate: true };
     var url = platform === 'ios' ? links.appStore : links.googlePlay;
     return url ? { url: url, label: label, shortLabel: shortLabel, affiliate: false } : null;
   }
@@ -87,14 +88,21 @@
     var links = getLinks(appId);
     var aff = getAffiliate(appId);
     var viaAff = aff && aff.downloadVia !== 'store';
+    if (viaAff) return [{ store: 'affiliate', label: 'アプリを入手する', url: aff.url, affiliate: true }];
     var out = [];
     if (links.appStore) out.push({ store: 'appstore', label: 'App Store', url: viaAff ? aff.url : links.appStore, affiliate: !!viaAff });
     if (links.googlePlay) out.push({ store: 'googleplay', label: 'Google Play', url: viaAff ? aff.url : links.googlePlay, affiliate: !!viaAff });
     return out;
   }
-  /** 外部リンク用の rel 属性（アフィリエイトには sponsored を付与） */
+  /** 外部リンク用の rel 属性（アフィリエイトには sponsored・nofollow を付与） */
   function relFor(affiliate) {
-    return affiliate ? 'sponsored noopener' : 'noopener';
+    return affiliate ? 'sponsored nofollow noopener' : 'noopener';
+  }
+  /** ASPのインプレッション計測用 1x1 画像（affiliate.js の pixel）。未設定なら空文字 */
+  function impressionPixel(appId) {
+    var aff = getAffiliate(appId);
+    if (!aff || !aff.pixel) return '';
+    return '<img class="aff-pixel" src="' + escapeHtml(aff.pixel) + '" width="1" height="1" alt="" border="0">';
   }
 
   /* ---------- SNSシェア ---------- */
@@ -221,6 +229,7 @@
     getStoreLinks: getStoreLinks,
     detectPlatform: detectPlatform,
     relFor: relFor,
+    impressionPixel: impressionPixel,
     SHARE_TARGETS: SHARE_TARGETS,
     renderShareButtons: renderShareButtons,
   };

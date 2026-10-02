@@ -59,6 +59,7 @@
       '<ul class="chips chips--center">' + app.shortFeatures.map(function (f) { return '<li>' + esc(f) + '</li>'; }).join('') + '</ul>' +
       officialBtn('detail_top') +
       storeButtons('detail_top') +
+      window.Site.impressionPixel(app.id) +
     '</section>' +
 
     '<section class="card section-card"><h2 class="h-sec">こんな人に向いています</h2>' + list(app.targets, 'check-list') + '</section>' +

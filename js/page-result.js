@@ -53,6 +53,7 @@
           '<a class="btn btn--primary btn--block" href="apps/' + esc(app.id) + '.html" data-cta="detail" data-app-id="' + esc(app.id) + '" data-position="result_' + rank + '">' + esc(app.name) + 'を詳しく見る</a>' +
           '<a class="btn btn--outline btn--block" href="' + esc(window.Site.getOfficialUrl(app.id)) + '" target="_blank" rel="' + window.Site.relFor(window.Site.isAffiliateOfficial(app.id)) + '" data-cta="official" data-app-id="' + esc(app.id) + '" data-position="result_' + rank + '">公式サイトを見る<span class="ext" aria-hidden="true">↗</span></a>' +
           downloadBtn(app, 'result_' + rank) +
+          window.Site.impressionPixel(app.id) +
         '</div>' +
       '</article>';
   }
