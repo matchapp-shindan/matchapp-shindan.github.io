@@ -401,3 +401,7 @@ body.has-sticky .site-footer { padding-bottom: 110px; }
 .sticky-cta__name { overflow: hidden; text-overflow: ellipsis; max-width: 40%; }
 .result-hero__type, .hero__title, .app-hero__name, .q-text { text-wrap: balance; }
 .sticky-cta .btn { white-space: nowrap; }
+
+/* ASPの計測用1x1画像はレイアウトに影響させない */
+.aff-pixel { position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none; }
+.store-buttons:has(> :only-child) { grid-template-columns: 1fr; }
